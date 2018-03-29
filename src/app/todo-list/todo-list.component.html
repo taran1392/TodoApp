@@ -1,0 +1,14 @@
+<header class="header">
+  <h1>Todos</h1>
+  <input class="new-todo" placeholder="What is on your mind ?" #input autofocus="" (keyup.enter)="addTodo(input.value);input.value=''">
+</header>
+<section class="main" *ngIf="todos.length > 0">
+  <ul class="todo-list">
+    <li *ngFor="let todo of todos" [class.completed]="todo.completed">
+      <app-todo-item
+        [todo]="todo"
+        (toggleComplete)="onToggleTodoComplete($event)"
+        (remove)="onRemoveTodo($event)"></app-todo-item>
+    </li>
+  </ul>
+</section>
